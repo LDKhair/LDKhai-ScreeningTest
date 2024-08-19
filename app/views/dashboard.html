@@ -1,0 +1,86 @@
+<div class="view-dashboard">
+    <div class="row p-0 m-0 h-100">
+        <div class="col-xl-2 p-0 menu-dashboard">
+            <div class="flex-justify-align" style="height: 80px;">
+                <div class="w-75 py-3">
+                    <img src="/img/logoFpoly.png" alt="" class="img-fluid">
+                </div>
+            </div>
+
+            <div class="mt-5 menu-items-dashboard">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <button type="button" class="nav-btn nav-btn-active" ng-click="isNotifications = !isNotifications">
+                            <div>
+                                <span><i class="fa-solid fa-bell"></i></span>
+                                <span class="text-xs mx-2">Notifications</span>
+                            </div>
+                        </button>
+                    </li>
+                    <li class="nav-item" ng-show="acc.role">
+                        <button type="button" class="nav-btn" ng-model="toggleIconUpDown" ng-click="toggleIconUpDown = !toggleIconUpDown" data-bs-toggle="collapse" data-bs-target="#filter_view">
+                            <div>
+                                <span><i class="fa-solid fa-list"></i></span>
+                                <span class="text-xs mx-2">View list</span>
+                            </div>
+                
+                            <div>
+                                <span class="flex-justify-align"><i class="fa-solid " ng-class="toggleIconUpDown ? 'fa-angle-down' : 'fa-angle-up'"></i></span>
+                            </div>
+                
+                        </button>
+                        <div class="collapse" id="filter_view">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <button type="button" class="nav-btn" ng-click="getAllInstructor(); handleSetView('viewTable'); isCreate = false">
+                                        <span class="text-xs mx-5">All</span>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button type="button" class="nav-btn" ng-click="handleSetView('viewForm'); createNew()">
+                                        <span class="text-xs mx-5">Add new instructor</span>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button type="button" class="nav-btn" ng-click="handleSetView('viewFormBan')">
+                                        <span class="text-xs mx-5">Ban instructor</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-btn" >
+                            <div>
+                                <span><i class="fa-solid fa-paper-plane"></i></span>
+                                <span class="text-xs mx-2">Service</span>
+                            </div>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-btn" >
+                            <div>
+                                <span><i class="fa-solid fa-earth-americas"></i></span>
+                                <span class="text-xs mx-2">Online Services</span>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xl-10 p-0 position-relative" style="box-sizing: border-box;">
+            <div ng-include="'/views/dashboard-header.html'"></div>
+            
+            <div ng-include="'/views/overview.html'"></div>
+            
+            <div ng-include="'/views/form.html'"></div>
+
+            <div ng-include="'/views/table-list.html'"></div>
+
+            <div ng-include="'/views/dashboard-footer.html'"></div>
+        </div>
+    </div>
+</div>
+
+<div ng-include="'/views/offcanvas-change-pass.html'"></div>

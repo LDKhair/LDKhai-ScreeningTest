@@ -1,0 +1,59 @@
+<div class="login-view" style="height: 100vh;">
+    <div class="container-fluid p-0" style="height: 100%">
+      <div class="h-75">
+        <div class="row position-relative top-50 translate-middle-y">
+          <div class="col-xl-7 p-0 d-flex justify-content-center align-items-center">
+            <img
+              src="https://reviewedu.net/wp-content/uploads/2021/11/truong-cao-dang-fpt-polytechnic-1.png"
+              alt=""
+              class="img-fluid object-fit-lg-cover"
+            />
+          </div>
+          <div class="col-xl-5 p-0 form_login">
+            <form class="form" ng-submit="login(username, password)" ng-show="!viewForgotPass">
+              <div class="inputForm">
+                <input type="text" class="input" placeholder="Enter your Username*" ng-model="username"/>
+              </div>
+
+              <div class="inputForm">
+                <input
+                  type="password"
+                  class="input"
+                  placeholder="Enter your Password"
+                  ng-attr-type="{{!showPassword ? 'text' : 'password'}}"
+                  ng-model="password"
+                />
+                <i
+                  class="fa-solid"
+                  ng-class="!showPassword ? 'fa-eye' : 'fa-eye-slash'"
+                  ng-click="handleShowPass()"
+                  style="cursor: pointer"
+                ></i>
+              </div>
+
+              <button class="button-submit" type="submit">Sign In</button>
+              <div class="flex-row" ng-click="showViewForgotPassword()">
+                <span class="span">Forgot password?</span>
+              </div>
+            </form>
+            
+            <form class="form" action="" ng-submit="forgotPassword()" ng-show="viewForgotPass">
+              <div class="inputForm">
+                <input type="text" class="input" placeholder="Enter your Email*" ng-model="email"/>
+              </div>
+              <button class="button-submit" type="submit">Send Reset Link</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-25 d-flex justify-content-center flex-column footer-login">
+        <div class="d-flex justify-content-center">
+          <img src="/img/whiteLogoFpoly.png" alt="" class="img-fluid" />
+        </div>
+        <div class="text-center text-light fs-5 fw-light pt-4 pb-2">
+          Trụ sở chính Tòa nhà FPT Polytechnic, Phố Trịnh Văn Bô, Nam Từ Liêm, Hà Nội
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,61 @@
+<div class="offcanvas offcanvas-end flex-justify-align" id="changePass">
+    <div class="wrapper">
+        <div class="text-m fw-medium">CHANGE PASSWORD</div>
+
+        <div class="mt-3">
+            <form action="" ng-submit="changePassword(infoChangePassword.password, infoChangePassword.newPassword)">
+                <div class="mb-3">
+                    <div class="form-floating position-relative">
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            placeholder="Current Password*" 
+                            ng-model="infoChangePassword.password"
+                            ng-attr-type="{{!showPassword['current'] ? 'password' : 'text'}}"
+                            ng-class="{'invalid-input': errorMessage.password.length > 0}"
+                        >
+                        <label class="text-xs" for="">Current Password*</label>
+                        <span class="position-absolute top-50 translate-middle-y cursor" style="right: 10px;">
+                            <i 
+                                class="fa-solid"
+                                ng-class="!showPassword['current'] ? 'fa-eye' : 'fa-eye-slash'"
+                                ng-click="togglePassword('current')"
+                            ></i>
+                        </span>
+                    </div>
+                    <div class="text-xs text-invalid" ng-show="errorMessage.password.length > 0">
+                        {{errorMessage.password}}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="form-floating position-relative">
+                        <input 
+                            type="password" 
+                            class="form-control" 
+                            placeholder="New Password*" 
+                            ng-model="infoChangePassword.newPassword"
+                            ng-attr-type="{{!showPassword['new'] ? 'password' : 'text'}}"
+                            ng-class="{'invalid-input': errorMessage.newPassword.length > 0}"
+                        >
+                        <label class="text-xs" for="">New Password*" </label>
+                        <span class="position-absolute top-50 translate-middle-y cursor" style="right: 10px;">
+                            <i 
+                                class="fa-solid"
+                                ng-class="!showPassword['new'] ? 'fa-eye' : 'fa-eye-slash'"
+                                ng-click="togglePassword('new')"
+                            ></i>
+                        </span>
+                    </div>
+                    <div class="text-xs text-invalid" ng-show="errorMessage.newPassword.length > 0">
+                        {{errorMessage.newPassword}}
+                    </div>
+                </div>
+                
+                <div>
+                    <button type="submit" class="bottone5">CHANGE</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

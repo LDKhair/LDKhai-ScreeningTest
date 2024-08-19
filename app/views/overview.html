@@ -1,0 +1,141 @@
+<div class="px-5 overview" ng-show="menuView['viewOverall']">
+    <div class="row m-0 p-0 justify-content-between">
+        <div class="col-4 mt-3">
+            <div class="overall">
+                <div class="text-l fw-medium">{{instructor.firstName + " " + instructor.lastName}}</div>
+                <div class="text-xs">{{acc.role ? 'Admin' : 'Instructor'}}</div>
+
+                <div class="mt-3">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-xs">Email:</span>
+                        <span class="text-xs">{{instructor.email}}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="text-xs">Username:</span>
+                        <span class="text-xs">{{instructor.instructorID}}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="text-xs">Status:</span>
+                        <span class="text-xs">
+                            <span class="">Active</span>
+                            <span class="text-success">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </span>
+                        </span>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <button type="button" class="bottone5 text-xs" data-bs-toggle="offcanvas" data-bs-target="#changePass">Change Password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8 my-3" style="box-shadow: rgba(0, 0, 0, 0.35) 2px 5px 8px;">
+            <div class="text-s fw-medium px-5 my-3">Personal Info</div>
+            <div class="px-5 overflow-y-scroll">
+                <form action="" ng-submit="updateInfoInstructor()">
+                    <div class="row mt-1 mb-3">
+                        <div class="col-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" ng-model="instructor.firstName" placeholder="First Name" disabled>
+                                <label class="text-xs" for="">First Name</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-floating">
+                                <input 
+                                    type="text" 
+                                    class="form-control"
+                                    ng-model="instructor.lastName" 
+                                    placeholder="Last Name" 
+                                    disabled
+                                >
+                                <label class="text-xs" for="">Last Name</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Instructor ID" 
+                            ng-model="instructor.instructorID"
+                            disabled
+                        >
+                        <label class="text-xs" for="">Instructor ID</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="Email"
+                            ng-model="instructor.email"
+                        >
+                        <label class="text-xs" for="">Email</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input 
+                            type="text" 
+                            class="form-control"
+                            ng-model="instructor.address"
+                            placeholder="Address">
+                        <label class="text-xs" for="">Address</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-floating mb-3">
+                                <select class="form-select text-s" ng-model="instructor.levelID">
+                                    <option value="1">Cử nhân cao đẳng</option>
+                                    <option value="2">Cử nhân đại học</option>
+                                    <option value="3">Thạc sỹ</option>
+                                    <option value="4">Tiến sỹ</option>
+                                </select>
+                                <label class="text-s" for="educationLevel">Education Level</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-floating mb-3">
+                                <select class="form-select text-s" ng-model="instructor.typeID">
+                                    <option value="2" selected>Part Time</option>
+                                    <option value="1">Full Time</option>
+                                </select>
+                                <label class="text-s" for="typeInstructor">Type Instructor</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-floating mb-3">
+                                <select class="form-select text-s" ng-model="instructor.gender" disabled>
+                                    <option value="true" selected>Male</option>
+                                    <option value="false">Female</option>
+                                </select>
+                                <label class="text-s" for="gender">Gender</label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-floating mb-3">
+                                <input 
+                                    type="date" 
+                                    class="form-control" 
+                                    ng-model="instructor.startDate"
+                                    placeholder="name@example.com"
+                                    disabled 
+                                >
+                                <label for="startDate">Start Date</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <button class="bottone5" type="submit">UPDATE</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

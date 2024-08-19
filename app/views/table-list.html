@@ -1,0 +1,98 @@
+<div class="view-list" ng-show="menuView['viewTable']">
+    <div class="row px-5 m-0 position-relative">
+        <div class="col-8 p-0 py-3">
+            <span class="text-xl fw-medium">List Instructors</span>
+            <span class="mx-3">({{instructors.length}} instructors)</span>
+        </div>
+
+        <div class="col-4 p-0 d-flex align-items-end justify-content-end mb-2">
+            <div class="group">
+                <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+                <input 
+                    placeholder="Search" 
+                    type="text" 
+                    class="input"
+                    ng-model="valueSearch"
+                    ng-model-options="{ debounce: 800 }" 
+                    ng-change="handleSearch(valueSearch); showDropdown(valueSearch)"
+                    ng-focus="showDropdown(valueSearch)"
+                    ng-blur="hideDropdown()"
+                    >
+                <span class="position-absolute top-0 end-0" ng-show="valueSearch">
+                    <button class="btn" type="button" ng-click="valueSearch = ''">
+                        <span><i class="fa-solid fa-xmark"></i></span>
+                    </button>
+                </span>
+            </div>
+
+            <ul class="dropdown-menu show popup-search" ng-show="isDropdownVisible && filteredInstructors.length > 0" >
+                <li class="dropdown-item cursor" ng-repeat="x in filteredInstructors | limitTo: 8" ng-click="showDetail(x.id)">
+                    <div class="row m-0 p-0">
+                        <div class="col-3 p-0">
+                            <img class="img-fluid" src="/img/avatar-standard.jpg" width="50">
+                        </div>
+                        <div class="col-9 p-0 info-popup">
+                            <div class="text-s fw-bolder">{{ x.firstName + " " + x.lastName }}</div>
+                            <div class="text-xs">{{ x.instructorID }}</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row p-0 m-0 px-5 my-3 table-list">
+        <table class="table table-bordered table-hover overflow-y-auto">
+            <thead class="text-s position-sticky top-0 z-1">
+              <tr >
+                <th>
+                    <span class="cursor d-flex justify-content-between align-items-center" ng-click="filter('instructorID')">
+                        <span>Code</span>
+                        <span class="text-xs"><i class="fa-solid " ng-class="instructorProp['instructorID'] ? 'fa-arrow-down' : 'fa-arrow-up'"></i></span>
+                    </span>
+                </th>
+                <th>
+                    <span class="cursor d-flex justify-content-between align-items-center" ng-click="filter('firstName')">
+                        <span>First Name</span>
+                        <span class="text-xs"><i class="fa-solid " ng-class="instructorProp['firstName'] ? 'fa-arrow-down' : 'fa-arrow-up'"></i></span>
+                    </span>
+                </th>
+                <th>
+                    <span class="cursor d-flex justify-content-between align-items-center" ng-click="filter('lastName')">
+                        <span>Last Name</span>
+                        <span class="text-xs"><i class="fa-solid " ng-class="instructorProp['lastName'] ? 'fa-arrow-down' : 'fa-arrow-up'"></i></span>
+                    </span>
+                </th>
+                <th>
+                    <span class="cursor d-flex justify-content-between align-items-center" ng-click="filter('typeName')">
+                        <span>Faculty Type</span>
+                        <span class="text-xs"><i class="fa-solid " ng-class="instructorProp['typeName'] ? 'fa-arrow-down' : 'fa-arrow-up'"></i></span>
+                    </span>
+                </th>
+                <th>
+                    <span class="cursor d-flex justify-content-between align-items-center" ng-click="filter('levelName')">
+                        <span>Education Level</span>
+                        <span class="text-xs"><i class="fa-solid " ng-class="instructorProp['levelName'] ? 'fa-arrow-down' : 'fa-arrow-up'"></i></span>
+                    </span>
+                </th>
+                <th>
+                    <span class="cursor d-flex justify-content-between align-items-center" ng-click="filter('startDate')">
+                        <span>Start Date</span>
+                        <span class="text-xs"><i class="fa-solid " ng-class="instructorProp['startDate'] ? 'fa-arrow-down' : 'fa-arrow-up'"></i></span>
+                    </span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="text-xs">
+              <tr class="cursor" ng-repeat="x in instructors" ng-click="showDetail(x.id, 'viewForm')">
+                <td>{{x.instructorID}}</td>
+                <td>{{x.firstName}}</td>
+                <td>{{x.lastName}}</td>
+                <td>{{x.typeName}}</td>
+                <td>{{x.levelName}}</td>
+                <td>{{x.startDate | date: "dd-mm-yyyy"}}</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

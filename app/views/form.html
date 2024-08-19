@@ -1,0 +1,156 @@
+<div class="px-5 view-form-add" ng-show="menuView['viewForm']">
+    <div class="text-m fw-medium text-start py-3">Form Instructor</div>
+
+    <div class="row p-0 m-0 flex-justify-align">
+        <div class="col-8">
+            <form ng-submit="isCreate ? createInstructor() : updateInfoAdmin()">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <input 
+                                type="text" 
+                                class="form-control text-s" 
+                                id="firstName" 
+                                placeholder="First Name" 
+                                ng-model="instructor.firstName" 
+                                autocomplete="off"
+                                ng-disabled="!isCreate"
+                                ng-class="{'invalid-input': errorMessage.firstName.length > 0}" 
+                            >
+                            <label class="text-s" for="firstName">First Name*</label>
+                            <div class="text-xs text-invalid" ng-show="errorMessage.firstName.length > 0">
+                                {{errorMessage.firstName}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <input 
+                                type="text" 
+                                class="form-control text-s" 
+                                id="lastName" 
+                                placeholder="Last Name" 
+                                ng-model="instructor.lastName" 
+                                autocomplete="off"
+                                ng-disabled="!isCreate"   
+                                ng-class="{'invalid-input': errorMessage.lastName.length > 0}" 
+                            >
+                            <label class="text-s" for="lastName">Last Name*</label>
+                            <div class="text-xs text-invalid" ng-show="errorMessage.lastName.length > 0">
+                                {{errorMessage.lastName}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="form-floating mb-3">
+                    <input 
+                        type="text" 
+                        class="form-control text-s" 
+                        id="instructorID" 
+                        placeholder="Instructor ID" 
+                        ng-model="instructor.instructorID" 
+                        autocomplete="off"
+                        ng-disabled="!isCreate"
+                        ng-class="{'invalid-input': errorMessage.instructorID.length > 0}"
+                    >
+                    <label class="text-s" for="instructorID">Instructor ID</label>
+                    <div class="text-xs text-invalid" ng-show="errorMessage.instructorID.length > 0">
+                        {{errorMessage.instructorID}}
+                    </div>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input 
+                        type="text" 
+                        class="form-control text-s" 
+                        id="email" 
+                        placeholder="Email*" 
+                        ng-model="instructor.email" 
+                        autocomplete="off"
+                        ng-disabled="!isCreate"
+                        ng-class="{'invalid-input': errorMessage.email.length > 0}"
+                    >
+                    <label class="text-s" for="email">Email*</label>
+                    <div class="text-xs text-invalid" ng-show="errorMessage.email.length > 0">
+                        {{errorMessage.email}}
+                    </div>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input 
+                        type="text" 
+                        class="form-control text-s" 
+                        id="address" 
+                        placeholder="Address" 
+                        ng-model="instructor.address" 
+                        autocomplete="off"
+                        ng-class="{'invalid-input': errorMessage.address.length > 0}"
+                    >
+                    <label class="text-s" for="address">Address*</label>
+                    <div class="text-xs text-invalid" ng-show="errorMessage.address.length > 0">
+                        {{errorMessage.address}}
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <select class="form-select text-s" id="educationLevel" ng-model="instructor.levelID">
+                                <option value="1">Cử nhân cao đẳng</option>
+                                <option value="2">Cử nhân đại học</option>
+                                <option value="3">Thạc sỹ</option>
+                                <option value="4">Tiến sỹ</option>
+                            </select>
+                            <label class="text-s" for="educationLevel">Education Level</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <select class="form-select text-s" id="typeInstructor" ng-model="instructor.typeID">
+                                <option value="2" selected>Part Time</option>
+                                <option value="1">Full Time</option>
+                            </select>
+                            <label class="text-s" for="typeInstructor">Type Instructor</label>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <select class="form-select text-s" id="gender" ng-model="instructor.gender" ng-disabled="!isCreate">
+                                <option value="true" selected>Male</option>
+                                <option value="false">Female</option>
+                            </select>
+                            <label class="text-s" for="gender">Gender</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <input 
+                                type="date" 
+                                class="form-control" 
+                                ng-model="instructor.startDate" 
+                                id="startDate" 
+                                placeholder="name@example.com" 
+                                ng-disabled="!isCreate"
+                                ng-class="{'invalid-input': errorMessage.startDate.length > 0}"
+                            >
+                            <label for="startDate">Start Date</label>
+                            <div class="text-xs text-invalid" ng-show="errorMessage.startDate.length > 0">
+                                {{ errorMessage.startDate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="btn-add-new">
+                    <button class="bottone5" type="submit">{{isCreate ? 'CREATE' : 'UPDATE'}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
